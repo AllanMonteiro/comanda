@@ -1,54 +1,79 @@
+import tkinter as tk
+from tkinter import messagebox
 
-#Cadastro de Clientes:
-#Criar uma estrutura para armazenar os dados dos clientes (nome, telefone, endereço, etc.).
 class Cliente:
     def __init__(self, nome, telefone, endereco):
         self.nome = nome
         self.telefone = telefone
         self.endereco = endereco
-#Cadastro de Produtos:
-#Criar uma estrutura para armazenar os dados dos produtos (nome, preço, código, etc.).
+
 class Produto:
     def __init__(self, codigo, nome, preco):
         self.codigo = codigo
         self.nome = nome
         self.preco = preco
 
-#Implementar funções para adicionar, editar, listar e excluir produtos.
-
 class Comanda:
     def __init__(self, cliente):
         self.cliente = cliente
         self.produtos = []
-    
+
     def adicionar_produto(self, produto):
         self.produtos.append(produto)
 
-    def remover_produtos(self, codigo_produto):
-        self.produtos.remove(Produto)
+    def remover_produto(self, codigo_produto):
+        # Implemente a lógica para remover um produto da comanda
+        pass
 
     def calcular_total(self):
-        total  = sum(produto.preco for produto in self.produtos)
+        total = sum(produto.preco for produto in self.produtos)
         return total
 
-
 def gerar_relatorio(comanda):
+    # Implemente a lógica para gerar o relatório em PDF
     pass
 
+def adicionar_produto():
+    # Implemente a lógica para adicionar um produto à comanda
+    pass
 
+def finalizar_comanda():
+    # Implemente a lógica para finalizar a comanda e gerar o relatório
+    pass
 
-cliente1 = Cliente("João", "123456789", "Rua A, 123")
-produto1 = Produto("001", "Cerveja", 5.0)
-produto2 = Produto("002", "Refrigerante", 3.0)
+def criar_interface():
+    root = tk.Tk()
+    root.title("Controle de Comandas")
 
-comanda_joao = Comanda(cliente1)
-comanda_joao.adicionar_produto(produto1)
-comanda_joao.adicionar_produto(produto2)
+    label_cliente = tk.Label(root, text="Nome do Cliente:")
+    label_cliente.grid(row=0, column=0)
 
-total_comanda_joao = comanda_joao.calcular_total()
-print("Total da comanda do João:", total_comanda_joao)
+    entry_cliente = tk.Entry(root)
+    entry_cliente.grid(row=0, column=1)
 
-gerar_relatorio(comanda_joao)
+    label_produto = tk.Label(root, text="Produto:")
+    label_produto.grid(row=1, column=0)
+
+    entry_produto = tk.Entry(root)
+    entry_produto.grid(row=1, column=1)
+
+    label_preco = tk.Label(root, text="Preço:")
+    label_preco.grid(row=1, column=2)
+
+    entry_preco = tk.Entry(root)
+    entry_preco.grid(row=1, column=3)
+
+    button_adicionar = tk.Button(root, text="Adicionar Produto", command=adicionar_produto)
+    button_adicionar.grid(row=2, column=0, columnspan=2)
+
+    button_finalizar = tk.Button(root, text="Finalizar Comanda", command=finalizar_comanda)
+    button_finalizar.grid(row=2, column=2, columnspan=2)
+
+    root.mainloop()
+
+if __name__ == "__main__":
+    criar_interface()
+
 
 
 
